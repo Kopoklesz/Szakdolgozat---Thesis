@@ -272,7 +272,9 @@ export class SignatureService {
         expiryDate: Date,
         maxActivations: number,
     ): Promise<Buffer> {
-        const qrImageUrl = await QRCode.toDataURL(qrData, {
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        const qrContent = `${frontendUrl}/redeem?qr=${qrData}`;
+        const qrImageUrl = await QRCode.toDataURL(qrContent, {
             width: 400,
             margin: 2,
             color: {
