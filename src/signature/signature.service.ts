@@ -371,8 +371,8 @@ export class SignatureService {
 
             let balance = await queryRunner.manager.findOne(UserBalance, {
                 where: {
-                    user: { user_id: userId },
-                    webshop: { webshop_id: code.event.webshop_id },
+                    user: { user_id: userId } as User,
+                    webshop: { webshop_id: code.event.webshop_id } as any,
                 },
             });
 
@@ -449,8 +449,8 @@ export class SignatureService {
 
             let balance = await queryRunner.manager.findOne(UserBalance, {
                 where: {
-                    user: { user_id: userId },
-                    webshop: { webshop_id: qr.event.webshop_id },
+                    user: { user_id: userId } as User,
+                    webshop: { webshop_id: qr.event.webshop_id } as any,
                 },
             });
 
